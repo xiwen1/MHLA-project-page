@@ -86,15 +86,92 @@ body {
   font-variant: small-caps;
 }
 
+/* Gradient Text Effect for MHLA Title */
+.gradient-text {
+  background: linear-gradient(90deg, 
+    #667eea 0%,
+    #764ba2 20%,
+    #f093fb 40%,
+    #f5576c 60%,
+    #ff6b6b 80%,
+    #667eea 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 900;
+  letter-spacing: -1px;
+  font-style: italic;
+  text-shadow: none;
+  animation: gradientShift 6s ease infinite;
+  display: inline-block;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+  100% {
+    background-position: 0% center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gradient-text {
+    animation: none;
+    background: linear-gradient(90deg, #667eea 0%, #f5576c 100%);
+  }
+}
+
+/* Subtle Accent for "Linear Attention" */
+.accent-text {
+  color: var(--primary-color);
+  font-weight: 700;
+  position: relative;
+  padding: 0 4px;
+  /* border-bottom: 2px solid var(--primary-color); */
+  transition: all 0.3s ease;
+  letter-spacing: 0.3px;
+  text-shadow: 0 0 8px rgba(37, 99, 235, 0.3);
+}
+
+/* .accent-text:hover {
+  text-shadow: 0 0 8px rgba(37, 99, 235, 0.3);
+} */
+
 
 /* Hero Section Modernization */
 .hero {
   position: relative;
   overflow: hidden;
+  background-image: url('../images/carousel1.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.75);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 2;
 }
 
 .hero.is-light {
-  background: var(--background-secondary);
+  background: transparent;
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
 }
@@ -120,6 +197,7 @@ body {
     color: var(--text-primary) !important;
     margin-bottom: 2rem !important;
     line-height: 1.1 !important;
+    font-size: 2.2rem !important;
 }
 
 .publication-banner {
