@@ -105,6 +105,7 @@ body {
   text-shadow: none;
   animation: gradientShift 6s ease infinite;
   display: inline-block;
+  font-size: 1.2em;
 }
 
 @keyframes gradientShift {
@@ -147,7 +148,7 @@ body {
 .hero {
   position: relative;
   overflow: hidden;
-  background-image: url('../images/carousel1.jpg');
+  /* background-image: url('../images/carousel1.jpg'); */
   background-attachment: fixed;
   background-size: cover;
   background-position: center;

@@ -74,7 +74,7 @@
 
 
   <!-- TODO: Replace with your paper title and authors -->
-  <title>PAPER_TITLE - AUTHOR_NAMES | Academic Research</title>
+  <title>MHLA: Restoring Expressivity of Linear Attention via Token-Level Multi-Head</title>
   
   <!-- Favicon and App Icons -->
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
@@ -201,19 +201,29 @@
               Linear Attention via <br> <span class="accent-text">Token-Level Multi-Head</span>
             </h1>
             <div class="is-size-5 publication-authors">
-              <!-- TODO: Replace with your paper authors and their personal links -->
+              <!-- Paper Authors -->
               <span class="author-block">
-                <a href="https://xiwen1.github.io/">Kewei Zhang</a><sup>*</sup>,</span>
-                <span class="author-block">
-                  <a href="https://yeyeah.life/">Ye Huang</a><sup>*</sup>,</span>
-                  <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
-                  </span>
-                  </div>
+                <a href="https://xiwen1.github.io/">Kewei Zhang</a><sup>1*</sup>,</span>
+              <span class="author-block">
+                <a href="https://yeyeah.life/">Ye Huang</a><sup>1*</sup>,</span>
+              <span class="author-block">
+                <a href="#">Yufan Deng</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="#">Jincheng Yu</a><sup>2</sup>,</span>
+              <span class="author-block">
+                <a href="https://lawrence-cj.github.io/">Junsong Chen</a><sup>2</sup>,</span> <br>
+              <span class="author-block">
+                <a href="https://www.cs.toronto.edu/~linghuan/">Huan Ling</a><sup>2</sup>,</span> 
+              <span class="author-block">
+                <a href="https://xieenze.github.io/">Enze Xie</a><sup>2</sup>,</span>
+              <span class="author-block">
+                <a href="https://zhoudaquan.github.io/homepage.io/">Daquan Zhou</a><sup>1</sup></span>
+            </div>
 
                   <div class="is-size-5 publication-authors">
                     <!-- TODO: Replace with your institution and conference/journal info -->
-                    <span class="author-block">Peking University</span>
+                    <span class="author-block"><sup>1</sup>Peking University</span> 
+                    <span class="author-block"><sup>2</sup>Nvidia Research</span>
                     <!-- TODO: Remove this line if no equal contribution -->
                     <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
                   </div>
@@ -231,7 +241,7 @@
                       </a>
                     </span>
 
-                    <!-- TODO: Add your supplementary material PDF or remove this section -->
+                    <!-- TODO: Add your supplementary material PDF or remove this section
                     <span class="link-block">
                       <a href="static/pdfs/supplementary_material.pdf" target="_blank"
                       class="external-link button is-normal is-rounded is-dark">
@@ -240,7 +250,7 @@
                       </span>
                       <span>Supplementary</span>
                     </a>
-                  </span>
+                  </span> -->
 
                   <!-- TODO: Replace with your GitHub repository URL -->
                   <span class="link-block">
@@ -254,7 +264,7 @@
                 </span>
 
                 <!-- TODO: Update with your arXiv paper ID -->
-                <span class="link-block">
+                <!-- <span class="link-block">
                   <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -262,7 +272,7 @@
                   </span>
                   <span>arXiv</span>
                 </a>
-              </span>
+              </span> -->
             </div>
           </div>
         </div>
@@ -299,7 +309,7 @@
         <div class="content has-text-justified">
           <!-- TODO: Replace with your paper abstract -->
           <p>
-            While the Transformer architecture dominates many fields, its quadratic self-attention complexity hinders its use in large-scale applications. Linear attention offers an efficient alternative, but its direct application often degrades performance, with existing fixes typically re-introducing computational overhead through extra modules (e.g., depthwise separable convolution and few self-attention blocks) that defeat the original purpose. In this work, we identify a key failure mode in these methods: global context collapse, where the model loses representational diversity. To address this, we propose Multi-Head Linear Attention (MHLA), which preserves this diversity by computing attention within divided heads along the token dimension. We prove that MHLA maintains linear complexity while recovering much of the expressive power of softmax attention, and verify its effectiveness across multiple domains, achieving a 3.6% improvement on ImageNet classification, a 12.6% gain in image generation tasks with the same computational complexity and a 2.1% improvement on NLP.
+            While the Transformer architecture dominates many fields, its quadratic self-attention complexity hinders its use in large-scale applications. Linear attention offers an efficient alternative, but its direct application often degrades performance, with existing fixes typically re-introducing computational overhead through extra modules (e.g., depthwise separable convolution and few self-attention blocks) that defeat the original purpose. In this work, we identify a key failure mode in these methods: global context collapse, where the model loses representational diversity. To address this, we propose Multi-Head Linear Attention (MHLA), which preserves this diversity by computing attention within divided heads along the token dimension. We prove that MHLA maintains linear complexity while recovering much of the expressive power of softmax attention, and verify its effectiveness across multiple domains, achieving a 3.6% improvement on ImageNet classification, a 6.3% gain on NLP, a 12.6% improvement in image generation tasks and a 41% enhancement in video generation tasks with the same computational complexity.
           </p>
         </div>
       </div>
@@ -438,11 +448,11 @@
           <span class="copy-text">Copy</span>
         </button>
       </div>
-      <pre id="bibtex-code"><code>@article{YourPaperKey2024,
-  title={Your Paper Title Here},
-  author={First Author and Second Author and Third Author},
+      <pre id="bibtex-code"><code>@article{MHLA2025,
+  title={MHLA: Restoring Expressivity of Linear Attention via Token-Level Multi-Head},
+  author={Zhang, Kewei and Huang, Ye and Deng, Yufan and Yu, Jincheng and Chen, Junsong and Ling, Huan and Xie, Enze and Zhou, Daquan},
   journal={Conference/Journal Name},
-  year={2024},
+  year={2025},
   url={https://your-domain.com/your-project-page}
 }</code></pre>
     </div>
