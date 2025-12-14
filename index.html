@@ -296,7 +296,7 @@
 <section class="section performance-section">
   <div class="container is-max-desktop">
     <div class="performance-header">
-      <h2 class="performance-title">A Universal High-Efficiency Linear Attention Operator</h2>
+      <h2 class="performance-title">A <span class="title-highlight">Universal</span> High-Efficiency Linear Attention Operator</h2>
     </div>
     
     <div class="performance-grid">
@@ -386,7 +386,7 @@
         </div>
         <h3 class="feature-title">Optimal Efficiency</h3>
         <p class="feature-description">
-          Maintains identical complexity with <span class="feature-highlight">vanilla linear attention</span> with <span class="feature-highlight">zero overhead</span>, ensuring practical scalability across applications.
+          For sequence lengths >1k, <br><span class="feature-highlight is-size-5">MHLA surpasses Flash Attention</span> in speed. Maintains identical complexity with vanilla linear attention with <span class="feature-highlight">zero overhead</span>。
         </p>
       </div>
 
@@ -397,7 +397,7 @@
         </div>
         <h3 class="feature-title">Flexible Attention Forms</h3>
         <p class="feature-description">
-          Natively supports both <span class="feature-highlight">causal</span> and <span class="feature-highlight">non-causal</span> attention modes with built-in <span class="feature-highlight">chunkwise</span> training compatibility for enhanced flexibility.
+          Natively supports both <span class="feature-highlight is-size-5">causal</span> and <span class="feature-highlight is-size-5">non-causal</span> attention modes with built-in <span class="feature-highlight">chunkwise training</span> compatibility for enhanced flexibility.
         </p>
       </div>
 
@@ -408,7 +408,7 @@
         </div>
         <h3 class="feature-title">Token-Level Diversity</h3>
         <p class="feature-description">
-          First to introduce representational <span class="feature-highlight">diversity at the token level</span> for linear attention, recovering expressive power lost in prior methods.
+          Introduces diversity at the token level to <span class="feature-highlight is-size-5">break global context collapse</span> in linear attention, unlocking significant performance gains.
         </p>
       </div>
     </div>
@@ -434,54 +434,132 @@
 </section>
 <!-- End paper abstract -->
 
+<!-- Compact Case Gallery -->
+<section class="section case-gallery-section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 performance-title has-text-centered">Image Generation</h2>
+    
+    <!-- MHLA vs Flash Attention - Speed & FID Chart -->
+    <section class="chart-section" aria-label="MHLA vs Flash Attention speed and FID comparison">
+      <div class="chart-card">
+        <h3 class="title is-5 has-text-centered">Speed Comparison (Throughput)</h3>
+        <p class="has-text-centered normal-highlight is-size-6"><span class="title-highlight">8.2× speed up</span> compared with Flash Attention</p>
+        <div class="bar-chart" role="img" aria-label="Bar chart showing MHLA throughput 7.40 and Flash Attention throughput 0.90">
+          <div class="bar-row">
+            <span class="bar-label">MHLA</span>
+            <div class="bar-track">
+              <div class="bar-fill mhla" style="--value: 7.40" aria-label="MHLA throughput 7.40"></div>
+            </div>
+            <span class="bar-value">7.40</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Flash Attn</span>
+            <div class="bar-track">
+              <div class="bar-fill flash" style="--value: 0.90" aria-label="Flash Attention throughput 0.90"></div>
+            </div>
+            <span class="bar-value">0.90</span>
+          </div>
+        </div>
+
+        <h3 class="title is-5 has-text-centered fid-title">Quality Comparison (FID↓)</h3>
+        <!-- <p class="has-text-centered is-size-6">Lower is better: MHLA 59.8 vs Flash Attention 68.4</p> -->
+        <div class="bar-chart fid-chart" role="img" aria-label="Bar chart showing FID scores: MHLA 59.8 and Flash Attention 68.4 (lower is better)">
+          <div class="bar-row">
+            <span class="bar-label">MHLA</span>
+            <div class="bar-track">
+              <div class="bar-fill mhla" style="--value: 30" aria-label="MHLA FID 59.8"></div>
+            </div>
+            <span class="bar-value">59.8</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Flash Attn</span>
+            <div class="bar-track">
+              <div class="bar-fill flash" style="--value: 68.4" aria-label="Flash Attention FID 68.4"></div>
+            </div>
+            <span class="bar-value">68.4</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="gallery-container">
+      <div class="gallery" aria-label="Case image gallery">
+        <div class="gallery-item item1"><img src="static/images/case/0_512x512.png" alt="Case 0 square" loading="lazy"></div>
+        <div class="gallery-item item2"><img src="static/images/case/215_800x400.png" alt="Case 6 wide" loading="lazy"></div>
+        <div class="gallery-item item3"><img src="static/images/case/10_400x800.png" alt="Case 10 tall" loading="lazy"></div>
+        <div class="gallery-item item4"><img src="static/images/case/70_800x400.png" alt="Case 70 wide" loading="lazy"></div>
+        
+        <div class="gallery-item item6"><img src="static/images/case/midjourney10_800x400.png" alt="Midjourney 10 wide" loading="lazy"></div>
+        <div class="gallery-item item5"><img src="static/images/case/12_512x512.png" alt="Case 12 square" loading="lazy"></div>
+        <div class="gallery-item item7"><img src="static/images/case/COCOval2014000000211560_400x800.png" alt="Case 122 tall" loading="lazy"></div>
+        <div class="gallery-item item8"><img src="static/images/case/254_400x800.png" alt="Case 254 tall" loading="lazy"></div>
+        <div class="gallery-item item9"><img src="static/images/case/120_512x512.png" alt="Case 120 square" loading="lazy"></div>
+        <div class="gallery-item item10"><img src="static/images/case/COCOval2014000000441411_800x400.png" alt="COCO val wide" loading="lazy"></div>
+        <div class="gallery-item item11"><img src="static/images/case/6_800x400.png" alt="COCO val tall" loading="lazy"></div>
+        <!-- <div class="gallery-item item12"><img src="static/images/case/diffusiondb17_800x400.png" alt="DiffusionDB 17 wide" loading="lazy"></div> -->
+        <!-- <div class="gallery-item item13"><img src="static/images/case/partiprompts262_800x400.png" alt="Parti prompts 262 wide" loading="lazy"></div>
+        <div class="gallery-item item14"><img src="static/images/case/diffusiondb0_400x800.png" alt="DiffusionDB 0 tall" loading="lazy"></div>
+        <div class="gallery-item item15"><img src="static/images/case/drawtext24_512x512.png" alt="DrawText 24 square" loading="lazy"></div>
+        <div class="gallery-item item16"><img src="static/images/case/diffusiondb12_512x512.png" alt="DiffusionDB 12 square" loading="lazy"></div>
+        <div class="gallery-item item17"><img src="static/images/case/diffusiondb20_512x512.png" alt="DiffusionDB 20 square" loading="lazy"></div>
+        <div class="gallery-item item18"><img src="static/images/case/diffusiondb5_512x512.png" alt="DiffusionDB 5 square" loading="lazy"></div>
+        <div class="gallery-item item19"><img src="static/images/case/diffusiondb6_512x512.png" alt="DiffusionDB 6 square" loading="lazy"></div>
+        <div class="gallery-item item20"><img src="static/images/case/partiprompts243_512x512.png" alt="Parti prompts 243 square" loading="lazy"></div>
+        <div class="gallery-item item21"><img src="static/images/case/partiprompts27_400x800.png" alt="Parti prompts 27 tall" loading="lazy"></div>
+        <div class="gallery-item item22"><img src="static/images/case/partiprompts48_512x512.png" alt="Parti prompts 48 square" loading="lazy"></div>
+        <div class="gallery-item item23"><img src="static/images/case/partiprompts50_512x512.png" alt="Parti prompts 50 square" loading="lazy"></div>
+        <div class="gallery-item item24"><img src="static/images/case/COCOval2014000000425925_512x512.png" alt="COCO val square" loading="lazy"></div> -->
+      </div>
+    </div>
+    <p class="subtitle is-6 gallery-subtitle has-text-centered">Images generated with SANA-MHLA</p>
+  </div>
+</section>
+
+
+
 <!-- Teaser video-->
-<section class="hero teaser">
+<!-- <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <!-- TODO: Replace with your teaser video -->
+  
       <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
-        <!-- TODO: Add your video file path here -->
+  
         <source src="static/videos/banner_video.mp4" type="video/mp4">
       </video>
-      <!-- TODO: Replace with your video description -->
+
       <h2 class="subtitle has-text-centered">
         Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
       </h2>
     </div>
   </div>
-</section>
+</section>  -->
 <!-- End teaser video -->
 
 
-<!-- Image carousel -->
+<!-- Image carousel (commented out)
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
       <div id="results-carousel" class="carousel results-carousel">
        <div class="item">
-        <!-- TODO: Replace with your research result images -->
         <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy"/>
-        <!-- TODO: Replace with description of this result -->
         <h2 class="subtitle has-text-centered">
           First image description.
         </h2>
       </div>
       <div class="item">
-        <!-- Your image here -->
         <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy"/>
         <h2 class="subtitle has-text-centered">
           Second image description.
         </h2>
       </div>
       <div class="item">
-        <!-- Your image here -->
         <img src="static/images/carousel3.jpg" alt="Third research result visualization" loading="lazy"/>
         <h2 class="subtitle has-text-centered">
          Third image description.
        </h2>
      </div>
      <div class="item">
-      <!-- Your image here -->
       <img src="static/images/carousel4.jpg" alt="Fourth research result visualization" loading="lazy"/>
       <h2 class="subtitle has-text-centered">
         Fourth image description.
@@ -491,29 +569,30 @@
 </div>
 </div>
 </section>
+-->
 <!-- End image carousel -->
 
 
 
 
 <!-- Youtube video -->
-<section class="hero is-small is-light">
+<!-- <section class="hero is-small is-light">
   <div class="hero-body">
     <div class="container">
-      <!-- Paper video. -->
+
       <h2 class="title is-3">Video Presentation</h2>
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           
           <div class="publication-video">
-            <!-- TODO: Replace with your YouTube video ID -->
+
             <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
           </div>
         </div>
       </div>
     </div>
   </div>
-</section>
+</section> -->
 <!-- End youtube video -->
 
 
