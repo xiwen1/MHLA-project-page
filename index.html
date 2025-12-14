@@ -223,7 +223,7 @@
                   <div class="is-size-5 publication-authors">
                     <!-- TODO: Replace with your institution and conference/journal info -->
                     <span class="author-block"><sup>1</sup>Peking University</span> 
-                    <span class="author-block"><sup>2</sup>Nvidia Research</span>
+                    <span class="author-block"><sup>2</sup>NVIDIA</span>
                     <!-- TODO: Remove this line if no equal contribution -->
                     <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
                   </div>
@@ -281,6 +281,158 @@
   </div>
 </section>
 
+<!-- MHLA Pipeline -->
+<section class="section pipeline-section">
+  <div class="container is-max-desktop">
+    <div class="pipeline-card">
+      <img src="static/images/MHLA_pipeline.png" alt="MHLA pipeline overview" class="pipeline-image" loading="lazy" />
+      <p class="pipeline-caption">Figure: MHLA pipeline overview.</p>
+    </div>
+  </div>
+</section>
+<!-- End MHLA Pipeline -->
+
+<!-- MHLA Performance Highlights -->
+<section class="section performance-section">
+  <div class="container is-max-desktop">
+    <div class="performance-header">
+      <h2 class="performance-title">A Universal High-Efficiency Linear Attention Operator</h2>
+    </div>
+    
+    <div class="performance-grid">
+      <!-- Image Classification -->
+      <div class="performance-card">
+        <h3 class="performance-card-title">Image Classification</h3>
+        <div class="performance-metrics">
+          <div class="metric-item">
+            <span class="metric-label">Performance</span>
+            <span class="metric-value">+3.6%</span>
+          </div>
+          <div class="metric-separator"></div>
+          <div class="metric-item">
+            <span class="metric-label">Complexity</span>
+            <span class="metric-badge">Linear</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image Generation -->
+      <div class="performance-card">
+        <h3 class="performance-card-title">Image Generation</h3>
+        <div class="performance-metrics">
+          <div class="metric-item">
+            <span class="metric-label">Performance</span>
+            <span class="metric-value">+12.6%</span>
+          </div>
+          <div class="metric-separator"></div>
+          <div class="metric-item">
+            <span class="metric-label">Complexity</span>
+            <span class="metric-badge">Linear</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Language Modeling -->
+      <div class="performance-card">
+        <h3 class="performance-card-title">Language Modeling</h3>
+        <div class="performance-metrics">
+          <div class="metric-item">
+            <span class="metric-label">Performance</span>
+            <span class="metric-value">+6.3%</span>
+          </div>
+          <div class="metric-separator"></div>
+          <div class="metric-item">
+            <span class="metric-label">Complexity</span>
+            <span class="metric-badge">Linear</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video Generation -->
+      <div class="performance-card">
+        <h3 class="performance-card-title">Video Generation</h3>
+        <div class="performance-metrics">
+          <div class="metric-item">
+            <span class="metric-label">Performance</span>
+            <span class="metric-value">+41%</span>
+          </div>
+          <div class="metric-separator"></div>
+          <div class="metric-item">
+            <span class="metric-label">Complexity</span>
+            <span class="metric-badge">Linear</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End MHLA Performance Highlights -->
+
+
+
+<!-- MHLA Key Features -->
+<section class="section features-section">
+  <div class="container is-max-desktop">
+    <div class="features-header">
+      <h2 class="features-title">Why MHLA?</h2>
+      <p class="features-subtitle">Key Features that Set MHLA Apart</p>
+    </div>
+
+    <div class="features-grid">
+      <!-- Feature 1 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-bolt"></i>
+        </div>
+        <h3 class="feature-title">Optimal Efficiency</h3>
+        <p class="feature-description">
+          Maintains identical complexity with <span class="feature-highlight">vanilla linear attention</span> with <span class="feature-highlight">zero overhead</span>, ensuring practical scalability across applications.
+        </p>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-arrows-alt-h"></i>
+        </div>
+        <h3 class="feature-title">Flexible Attention Forms</h3>
+        <p class="feature-description">
+          Natively supports both <span class="feature-highlight">causal</span> and <span class="feature-highlight">non-causal</span> attention modes with built-in <span class="feature-highlight">chunkwise</span> training compatibility for enhanced flexibility.
+        </p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-star"></i>
+        </div>
+        <h3 class="feature-title">Token-Level Diversity</h3>
+        <p class="feature-description">
+          First to introduce representational <span class="feature-highlight">diversity at the token level</span> for linear attention, recovering expressive power lost in prior methods.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End MHLA Key Features -->
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">About MHLA</h2>
+        <div class="content has-text-justified">
+          <!-- TODO: Replace with your paper abstract -->
+          <p>
+            While the Transformer architecture dominates many fields, its quadratic self-attention complexity hinders its use in large-scale applications. Linear attention offers an efficient alternative, but its direct application often degrades performance, with existing fixes typically re-introducing computational overhead through extra modules (e.g., depthwise separable convolution and few self-attention blocks) that defeat the original purpose. In this work, we identify a key failure mode in these methods: global context collapse, where the model loses representational diversity. To address this, we propose Multi-Head Linear Attention (MHLA), which preserves this diversity by computing attention within divided heads along the token dimension. We prove that MHLA maintains linear complexity while recovering much of the expressive power of softmax attention, and verify its effectiveness across multiple domains, achieving a <span class="metric-highlight">3.6%</span> improvement on ImageNet classification, a <span class="metric-highlight">6.3%</span> gain on NLP, a <span class="metric-highlight">12.6%</span> improvement in image generation tasks and a <span class="metric-highlight">41%</span> enhancement in video generation tasks with the same computational complexity.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
 
 <!-- Teaser video-->
 <section class="hero teaser">
@@ -299,24 +451,6 @@
   </div>
 </section>
 <!-- End teaser video -->
-
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <!-- TODO: Replace with your paper abstract -->
-          <p>
-            While the Transformer architecture dominates many fields, its quadratic self-attention complexity hinders its use in large-scale applications. Linear attention offers an efficient alternative, but its direct application often degrades performance, with existing fixes typically re-introducing computational overhead through extra modules (e.g., depthwise separable convolution and few self-attention blocks) that defeat the original purpose. In this work, we identify a key failure mode in these methods: global context collapse, where the model loses representational diversity. To address this, we propose Multi-Head Linear Attention (MHLA), which preserves this diversity by computing attention within divided heads along the token dimension. We prove that MHLA maintains linear complexity while recovering much of the expressive power of softmax attention, and verify its effectiveness across multiple domains, achieving a 3.6% improvement on ImageNet classification, a 6.3% gain on NLP, a 12.6% improvement in image generation tasks and a 41% enhancement in video generation tasks with the same computational complexity.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End paper abstract -->
 
 
 <!-- Image carousel -->
@@ -467,8 +601,8 @@
         <div class="content">
 
           <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            <!-- This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page. -->
+            <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
             Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
 
