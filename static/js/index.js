@@ -119,6 +119,116 @@ function setupVideoCarouselAutoplay() {
     });
 }
 
+// Video modal functionality
+function setupVideoModal() {
+    // Create modal element
+    const modal = document.createElement('div');
+    modal.className = 'video-modal';
+    modal.innerHTML = `
+        <div class="video-modal-content">
+            <button class="video-modal-close" aria-label="Close video">
+                <i class="fas fa-times"></i>
+            </button>
+            <video controls autoplay muted loop></video>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    
+    const modalVideo = modal.querySelector('video');
+    const closeBtn = modal.querySelector('.video-modal-close');
+    
+    // Open modal on video click
+    const videoItems = document.querySelectorAll('.media-video');
+    videoItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // Get video source from the video element itself
+            const videoElement = this.querySelector('video source');
+            if (videoElement && videoElement.src) {
+                modalVideo.src = videoElement.src;
+                modal.classList.add('active');
+                // Play video
+                modalVideo.play().catch(e => {
+                    console.log('Video play failed:', e);
+                });
+            } else {
+                // Fallback to data-video attribute
+                const videoSrc = this.getAttribute('data-video');
+                if (videoSrc) {
+                    modalVideo.src = videoSrc;
+                    modal.classList.add('active');
+                    modalVideo.play().catch(e => {
+                        console.log('Video play failed:', e);
+                    });
+                }
+            }
+        });
+    });
+    
+    // Close modal
+    function closeModal() {
+        modal.classList.remove('active');
+        modalVideo.pause();
+        modalVideo.src = '';
+    }
+    
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+    
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+}
+
+// Setup video autoplay for media gallery
+function setupMediaGalleryVideoAutoplay() {
+    const galleryVideos = document.querySelectorAll('.media-gallery .media-video video');
+    
+    if (galleryVideos.length === 0) return;
+    
+    // Fix video source URLs to handle special characters in filenames
+    galleryVideos.forEach(video => {
+        const source = video.querySelector('source');
+        if (source && source.getAttribute('src')) {
+            const originalSrc = source.getAttribute('src');
+            // Split path and encode only the filename
+            const lastSlash = originalSrc.lastIndexOf('/');
+            if (lastSlash !== -1) {
+                const path = originalSrc.substring(0, lastSlash + 1);
+                const filename = originalSrc.substring(lastSlash + 1);
+                const encodedFilename = encodeURIComponent(filename);
+                source.src = path + encodedFilename;
+                video.load(); // Reload video with correct source
+            }
+        }
+    });
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const video = entry.target;
+            if (entry.isIntersecting) {
+                video.play().catch(e => {
+                    console.log('Autoplay prevented:', e);
+                });
+            } else {
+                video.pause();
+            }
+        });
+    }, {
+        threshold: 0.3
+    });
+    
+    galleryVideos.forEach(video => {
+        observer.observe(video);
+    });
+}
+
 $(document).ready(function() {
     // Check for click events on the navbar burger icon
 
@@ -138,5 +248,9 @@ $(document).ready(function() {
     
     // Setup video autoplay for carousel
     setupVideoCarouselAutoplay();
+    
+    // Setup media gallery video modal and autoplay
+    setupVideoModal();
+    setupMediaGalleryVideoAutoplay();
 
 })

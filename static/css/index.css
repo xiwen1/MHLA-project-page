@@ -1378,3 +1378,200 @@ a:focus {
     max-width: 100%; /* use full width on mobile */
   }
 }
+
+/* Media Gallery Section */
+.media-gallery-section {
+  background: var(--background-primary);
+  padding: 2rem 1.5rem;
+  margin-bottom: 0;
+}
+
+.media-gallery-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.media-gallery {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  /* Video ratio: 800x480 = 5:3, calculated row height for typical container width */
+  /* For 1152px container: (1152-110)/12 * 3/5 ≈ 52px */
+  grid-auto-rows: 40px;
+  gap: 10px;
+}
+
+.media-gallery-item {
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  background: #000;
+}
+
+.media-gallery-item:hover {
+  transform: scale(1.02);
+  z-index: 10;
+}
+
+/* Video items - fixed aspect ratio 800x480 = 5:3 */
+.media-video {
+  aspect-ratio: 10 / 6;
+}
+
+.media-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Video overlay for expand icon */
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.media-video:hover .video-overlay {
+  opacity: 1;
+}
+
+.video-overlay i {
+  color: white;
+  font-size: 2rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Image items - random aspect ratios */
+.media-image {
+  height: 100%;
+}
+
+.media-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Grid item placements */
+.item-v1 { grid-column: span 4; grid-row: span 4; }
+.item-i1 { grid-column: span 4; grid-row: span 4; }
+.item-v2 { grid-column: span 4; grid-row: span 4; }
+.item-i2 { grid-column: span 5; grid-row: span 3; }
+.item-v3 { grid-column: span 4; grid-row: span 4; }
+.item-i3 { grid-column: span 3; grid-row: span 8; }
+.item-v4 { grid-column: span 5; grid-row: span 5; }
+.item-i4 { grid-column: span 4; grid-row: span 4; }
+.item-v5 { grid-column: span 5; grid-row: span 5; }
+.item-i5 { grid-column: span 2; grid-row: span 5; }
+.item-v6 { grid-column: span 5; grid-row: span 5; }
+
+/* Video Modal for fullscreen preview */
+.video-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.video-modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+.video-modal-content {
+  position: relative;
+  width: 70%;
+  max-width: 800px;
+  max-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-modal-content video {
+  width: 100%;
+  height: auto;
+  max-height: 70vh;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.video-modal-close {
+  position: absolute;
+  top: -50px;
+  right: 0;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.video-modal-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive adjustments for media gallery */
+@media screen and (max-width: 768px) {
+  .media-gallery {
+    grid-template-columns: repeat(6, 1fr);
+    /* Video ratio: 800x480 = 5:3, calculated for mobile (6 columns) */
+    /* For 375px width: (375-40)/6 * 3/5 ≈ 33.5px */
+    grid-auto-rows: 34px;
+    gap: 8px;
+  }
+  
+  .item-v1, .item-v2, .item-v3, .item-v4, .item-v5, .item-v6 {
+    grid-column: span 6;
+    grid-row: span 2;
+  }
+  
+  .item-i1, .item-i2, .item-i3, .item-i4, .item-i5 {
+    grid-column: span 3;
+    grid-row: span 2;
+  }
+  
+  .video-modal-content {
+    width: 85%;
+    max-width: none;
+    max-height: 60vh;
+  }
+  
+  .video-modal-content video {
+    max-height: 60vh;
+  }
+  
+  .video-modal-close {
+    top: -40px;
+    font-size: 1.5rem;
+    width: 35px;
+    height: 35px;
+  }
+}
